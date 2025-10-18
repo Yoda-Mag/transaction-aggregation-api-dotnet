@@ -1,0 +1,51 @@
+# Visual Studio / .NET
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vscode/
+.vs/
+
+# Publish outputs
+out/
+publish/
+*.dll
+*.pdb
+*.exe
+*.log
+*.appsettings.Development.json
+
+# Properties folder
+Properties/launchSettings.json
+
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+*.nuspec
+
+# Rider IDE
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Docker
+*.dockerignore
+*.env
+docker-compose.override.yml
+docker-compose.override.*.yml
+*.log
+
+# Node (if any front-end)
+node_modules/
+
+# Temporary / cache
+*.tmp
+*.bak
+*.swp
