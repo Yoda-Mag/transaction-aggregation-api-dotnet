@@ -8,7 +8,7 @@ namespace TransactionAggregationApi.Controllers
     public class CustomerController : ControllerBase
     {
         [HttpGet]
-        public IActionResult GetAllCustomers()
+        public IActionResult getAllCustomers()
         {
             return Ok(MockDataSource.Customers);
         }

@@ -7,13 +7,14 @@ namespace TransactionAggregationApi.Data
     {
         public static List<Transaction> Transactions = new List<Transaction>
         {
-            new Transaction 
-            { 
+            new Transaction
+            {
                 CustomerId = MockDataSource.Customers[0].Id,
-                Amount = 200.00M, 
-                Date = DateTime.Now.AddDays(-1), 
-                Source = "RichBank", 
-                Category = "Travel" 
+                Amount = 200.00M,
+                Date = DateTime.Now.AddDays(-1000),
+                Source = "RichBank",
+                Category = "Travel",
+                isMoneyIn = false
             },
             new Transaction 
             { 
@@ -21,15 +22,17 @@ namespace TransactionAggregationApi.Data
                 Amount = 200.00M, 
                 Date = DateTime.Now.AddDays(-1), 
                 Source = "RichBank", 
-                Category = "Food" 
+                Category = "Bursary" ,
+                isMoneyIn = true
             },
-            new Transaction 
-            { 
+            new Transaction
+            {
                 CustomerId = MockDataSource.Customers[1].Id,
-                Amount = 150.00M, 
-                Date = DateTime.Now.AddDays(-2), 
-                Source = "RichBank", 
-                Category = "Dining" 
+                Amount = 150.00M,
+                Date = DateTime.Now.AddDays(-2),
+                Source = "RichBank",
+                Category = "Dining" ,
+                isMoneyIn  = false
             },
             new Transaction 
             { 
@@ -37,7 +40,8 @@ namespace TransactionAggregationApi.Data
                 Amount = 300.00M, 
                 Date = DateTime.Now.AddDays(-3), 
                 Source = "RichBank", 
-                Category = "Shopping" 
+                Category = "Shopping", 
+                isMoneyIn  = false
             }
         }; 
     }

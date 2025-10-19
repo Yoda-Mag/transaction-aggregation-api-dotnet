@@ -14,23 +14,28 @@ namespace TransactionAggregationApi.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll() => Ok(_service.GetAllTransactions());
+        public IActionResult getAll() => Ok(_service.getAllTransactions());
         
         [HttpGet("customer/{customerId}")]
-        public IActionResult GetByCustomer(Guid customerId)
+        public IActionResult getByCustomer(Guid customerId)
         {
-            var transactions = _service.GetTransactionsByCustomer(customerId);
+            var transactions = _service.getTransactionsByCustomer(customerId);
             if (!transactions.Any())
                 return NotFound($"No transactions found for customer {customerId}");
             return Ok(transactions);
         }
 
         [HttpGet("aggregate/category")]
-        public IActionResult GetCategoryAggregate() =>
-            Ok(_service.GetAggregatedCategory());
+        public IActionResult getCategoryAggregate() =>
+            Ok(_service.getAggregatedCategory());
 
         [HttpGet("aggregate/source")]
-        public IActionResult GetSourceAggregate() =>
-            Ok(_service.GetAggregatedSource());
+        public IActionResult getSourceAggregate() =>
+            Ok(_service.getAggregatedSource());
+
+
+        [HttpGet("aggregate/moneyflow")]
+        public IActionResult getMoneyFlowAggregate() =>
+            Ok(_service.getMoneyFlowAggregate());
     }
 }
