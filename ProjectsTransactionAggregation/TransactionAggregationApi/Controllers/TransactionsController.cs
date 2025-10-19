@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using TransactionAggregationApi.Models;
 using TransactionAggregationApi.Services;
 
 namespace TransactionAggregationApi.Controllers
@@ -8,46 +7,30 @@ namespace TransactionAggregationApi.Controllers
     [Route("api/[controller]")]
     public class TransactionsController : ControllerBase
     {
-        private readonly TransactionService _transactionService;
-
-        public TransactionsController()
+        private readonly TransactionService _service;
+        public TransactionsController(TransactionService service)
         {
-            _transactionService = new TransactionService();
+            _service = service;
         }
 
-        // GET: api/transactions
         [HttpGet]
-        public IActionResult GetAll()
-        {
-            var transactions = _transactionService.GetAllTransactions();
-            return Ok(transactions);
-        }
-
-        // GET: api/transactions/customer/{customerId}
+        public IActionResult GetAll() => Ok(_service.GetAllTransactions());
+        
         [HttpGet("customer/{customerId}")]
         public IActionResult GetByCustomer(Guid customerId)
         {
-            var transactions = _transactionService.GetTransactionsByCustomer(customerId);
+            var transactions = _service.GetTransactionsByCustomer(customerId);
             if (!transactions.Any())
                 return NotFound($"No transactions found for customer {customerId}");
-            
             return Ok(transactions);
         }
 
-        // GET: api/transactions/aggregate/category
         [HttpGet("aggregate/category")]
-        public IActionResult GetAggregatedByCategory()
-        {
-            var aggregated = _transactionService.GetAggregatedCategory();
-            return Ok(aggregated);
-        }
+        public IActionResult GetCategoryAggregate() =>
+            Ok(_service.GetAggregatedCategory());
 
-        // GET: api/transactions/aggregate/source
         [HttpGet("aggregate/source")]
-        public IActionResult GetAggregatedBySource()
-        {
-            var aggregated = _transactionService.GetAggregatedSource();
-            return Ok(aggregated);
-        }
+        public IActionResult GetSourceAggregate() =>
+            Ok(_service.GetAggregatedSource());
     }
 }

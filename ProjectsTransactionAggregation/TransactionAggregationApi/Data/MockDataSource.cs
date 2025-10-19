@@ -11,6 +11,6 @@ namespace TransactionAggregationApi.Data
             new Customer { Id = Guid.NewGuid(), Name = "Charlie" }
         };
 
-        public static List<Transaction> Transactions = new List<Transaction>(); // optional if you want a global pool
+        public static List<Transaction> Transactions = new List<Transaction>();
     }
 }

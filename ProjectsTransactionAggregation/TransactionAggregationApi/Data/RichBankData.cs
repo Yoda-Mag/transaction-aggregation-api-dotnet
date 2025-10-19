@@ -39,6 +39,6 @@ namespace TransactionAggregationApi.Data
                 Source = "RichBank", 
                 Category = "Shopping" 
             }
-        }; // <-- semicolon was missing here
+        }; 
     }
 }
