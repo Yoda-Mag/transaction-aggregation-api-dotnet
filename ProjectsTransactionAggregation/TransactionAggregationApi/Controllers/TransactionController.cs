@@ -5,10 +5,10 @@ namespace TransactionAggregationApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class TransactionsController : ControllerBase
+    public class TransactionController : ControllerBase
     {
         private readonly TransactionService _service;
-        public TransactionsController(TransactionService service)
+        public TransactionController(TransactionService service)
         {
             _service = service;
         }

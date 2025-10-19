@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using TransactionAggregationApi.Models;
 
 namespace TransactionAggregationApi.Data
@@ -6,8 +7,8 @@ namespace TransactionAggregationApi.Data
     {
         public static List<Customer> Customers = new List<Customer>
         {
-            new Customer { Id = Guid.NewGuid(), Name = "Alice" },
-            new Customer { Id = Guid.NewGuid(), Name = "Bob" },
+            new Customer { Id = Guid.NewGuid(), Name = "Alice", Email = "Alice@theBoaderland.com" },
+            new Customer { Id = Guid.NewGuid(), Name = "Bob", Email = "Bobby@icloud.com" },
             new Customer { Id = Guid.NewGuid(), Name = "Charlie" }
         };
 
