@@ -13,7 +13,7 @@ namespace TransactionAggregationApi.Controllers
             _service = service;
         }
 
-        [HttpGet]
+        [HttpGet("all")]
         public IActionResult getAll() => Ok(_service.getAllTransactions());
         
         [HttpGet("customer/{customerId}")]
@@ -34,8 +34,13 @@ namespace TransactionAggregationApi.Controllers
             Ok(_service.getAggregatedSource());
 
 
-        [HttpGet("aggregate/moneyflow")]
-        public IActionResult getMoneyFlowAggregate() =>
-            Ok(_service.getMoneyFlowAggregate());
+        [HttpGet("aggregate/moneyIn")]
+        public IActionResult getMoneyIn() =>
+            Ok(_service.getMoneyIn());
+
+        [HttpGet("aggregate/moneyOut")]
+        public IActionResult getMoneyOut() =>
+            Ok(_service.getMoneyOut());
+        
     }
 }

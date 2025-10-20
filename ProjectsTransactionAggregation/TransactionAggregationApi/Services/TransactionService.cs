@@ -41,24 +41,29 @@ public class TransactionService
                 Count = g.Count()
             });
     }
-    
 
-    public object getMoneyFlowAggregate()
-{
-    var totalIn = allTransactions
-        .Where(t => t.isMoneyIn)
-        .Sum(t => t.Amount);
 
-    var totalOut = allTransactions
-        .Where(t => !t.isMoneyIn)
-        .Sum(t => t.Amount);
+            public object getMoneyIn()
+        {
+            var moneyInTransactions = allTransactions.Where(t => t.isMoneyIn);
+            return new
+            {
+                TotalAmount = moneyInTransactions.Sum(t => t.Amount),
+                Count = moneyInTransactions.Count(),
+                Transactions = moneyInTransactions
+            };
+        }
 
-    return new
-    {
-        TotalMoneyIn = totalIn,
-        TotalMoneyOut = totalOut,
-        NetFlow = totalIn - totalOut 
-    };
-}
+        public object getMoneyOut()
+        {
+            var moneyOutTransactions = allTransactions.Where(t => !t.isMoneyIn);
+            return new
+            {
+                TotalAmount = moneyOutTransactions.Sum(t => t.Amount),
+                Count = moneyOutTransactions.Count(),
+                Transactions = moneyOutTransactions
+            };
+        }
+
 
 }
