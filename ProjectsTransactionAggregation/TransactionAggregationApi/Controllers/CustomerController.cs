@@ -5,12 +5,13 @@ namespace TransactionAggregationApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    
     public class CustomerController : ControllerBase
     {
         [HttpGet]
-        public IActionResult getAllCustomers()
-        {
-            return Ok(MockDataSource.Customers);
-        }
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public IActionResult getAllCustomers() =>
+           Ok(MockDataSource.Customers);
+        
     }
 }
