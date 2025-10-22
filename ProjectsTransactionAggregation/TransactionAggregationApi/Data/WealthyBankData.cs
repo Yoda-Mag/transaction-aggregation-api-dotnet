@@ -8,32 +8,36 @@ namespace TransactionAggregationApi.Data
 
         public static List<Transaction> Transactions = new List<Transaction>
         {
-                 new Transaction 
+                 new Transaction
                  { 
+                    Id = Guid.NewGuid(),
                     CustomerId = MockDataSource.Customers[0].Id,
                      Amount = 200.00M, 
                      Date = DateTime.Now.AddDays(-1), 
                      Source = "WealthyBank", 
                      Category = "Travel" 
                 },
-                  new Transaction 
-                 { 
+                  new Transaction
+                  { 
+                    Id = Guid.NewGuid(),
                     CustomerId = MockDataSource.Customers[0].Id,
                      Amount = 200.00M, 
                      Date = DateTime.Now.AddDays(-1), 
                      Source = "WealthyBank", 
                      Category = "Travel" 
                 },
-                new Transaction 
+                new Transaction
                 { 
-                        CustomerId = MockDataSource.Customers[1].Id,
-                         Amount = 150.00M, 
-                         Date = DateTime.Now.AddDays(-2), 
-                         Source = "WealthyBank", 
-                         Category = "Dining" 
+                    Id = Guid.NewGuid(),
+                    CustomerId = MockDataSource.Customers[1].Id,
+                        Amount = 150.00M, 
+                        Date = DateTime.Now.AddDays(-2), 
+                        Source = "WealthyBank", 
+                        Category = "Dining" 
                 },
-                new Transaction 
+                new Transaction
                 { 
+                    Id = Guid.NewGuid(),
                     CustomerId = MockDataSource.Customers[2].Id,
                         Amount = 300.00M, 
                         Date = DateTime.Now.AddDays(-3), 

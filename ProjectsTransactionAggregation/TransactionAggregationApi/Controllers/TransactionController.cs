@@ -29,9 +29,9 @@ namespace TransactionAggregationApi.Controllers
         public IActionResult getCategoryAggregate() =>
             Ok(_service.getAggregatedCategory());
 
-        [HttpGet("aggregate/source")]
-        public IActionResult getSourceAggregate() =>
-            Ok(_service.getAggregatedSource());
+        [HttpGet("aggregate/source-by-month")]
+        public IActionResult getSourceByMonthAggregate() =>
+            Ok(_service.getAggregatedSourceByMonth());
 
 
         [HttpGet("aggregate/moneyIn")]

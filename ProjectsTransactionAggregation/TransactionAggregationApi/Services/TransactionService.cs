@@ -29,23 +29,24 @@ public class TransactionService
     }
 
 
-    public IEnumerable<object> getAggregatedSource()
+    public IEnumerable<object> getAggregatedSourceByMonth()
     {
         return allTransactions
-            .GroupBy(t => new { t.Date.Year, t.Date.Month })
-            .Select(g => new
-            {
-                Year = g.Key.Year,
-                Month = g.Key.Month,
-                TotalAmount = g.Sum(t => t.Amount),
-                Count = g.Count()
-            });
+        .GroupBy(t => new { t.Source, t.Date.Year, t.Date.Month })
+        .Select(g => new
+        {
+            g.Key.Source,
+            g.Key.Year,
+            g.Key.Month,
+            TotalAmount = g.Sum(t => t.Amount),
+            Count = g.Count()
+        });
     }
 
 
             public object getMoneyIn()
         {
-            var moneyInTransactions = allTransactions.Where(t => t.isMoneyIn);
+            var moneyInTransactions = allTransactions.Where(t => t.isMoneyIn); //when isMoneyIn is true
             return new
             {
                 TotalAmount = moneyInTransactions.Sum(t => t.Amount),
@@ -56,7 +57,7 @@ public class TransactionService
 
         public object getMoneyOut()
         {
-            var moneyOutTransactions = allTransactions.Where(t => !t.isMoneyIn);
+            var moneyOutTransactions = allTransactions.Where(t => !t.isMoneyIn); //when isMoneyIn is false
             return new
             {
                 TotalAmount = moneyOutTransactions.Sum(t => t.Amount),

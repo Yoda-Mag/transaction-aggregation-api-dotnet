@@ -9,6 +9,7 @@ namespace TransactionAggregationApi.Data
         {
             new Transaction
             {
+                Id = Guid.NewGuid(),
                 CustomerId = MockDataSource.Customers[0].Id,
                 Amount = 200.00M,
                 Date = DateTime.Now.AddDays(-1000),
@@ -18,6 +19,7 @@ namespace TransactionAggregationApi.Data
             },
             new Transaction 
             { 
+                Id = Guid.NewGuid(),
                 CustomerId = MockDataSource.Customers[0].Id,
                 Amount = 200.00M, 
                 Date = DateTime.Now.AddDays(-1), 
@@ -27,6 +29,7 @@ namespace TransactionAggregationApi.Data
             },
             new Transaction
             {
+                Id = Guid.NewGuid(),
                 CustomerId = MockDataSource.Customers[1].Id,
                 Amount = 150.00M,
                 Date = DateTime.Now.AddDays(-2),
@@ -34,8 +37,9 @@ namespace TransactionAggregationApi.Data
                 Category = "Dining" ,
                 isMoneyIn  = false
             },
-            new Transaction 
+            new Transaction
             { 
+                Id = Guid.NewGuid(),
                 CustomerId = MockDataSource.Customers[2].Id,
                 Amount = 300.00M, 
                 Date = DateTime.Now.AddDays(-3), 
