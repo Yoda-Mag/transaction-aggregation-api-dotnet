@@ -1,4 +1,3 @@
-using System.ComponentModel.DataAnnotations;
 using TransactionAggregationApi.Models;
 
 namespace TransactionAggregationApi.Data

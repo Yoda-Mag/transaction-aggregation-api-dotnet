@@ -1,5 +1,4 @@
 using TransactionAggregationApi.Models;
-using TransactionAggregationApi.Data;
 
 namespace TransactionAggregationApi.Data
 {
