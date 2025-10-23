@@ -44,7 +44,7 @@ Supports fetching transactions, querying by customer, and aggregating totals by 
 ### Prerequisites
 
 * [.NET 9 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)
-* [Docker](https://www.docker.com/get-started) *(optional, for containerized deployment)*
+* [Docker](https://www.docker.com/get-started) 
 
 ### Clone the Repository
 ```bash
