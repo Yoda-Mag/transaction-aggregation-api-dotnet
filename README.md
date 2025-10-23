@@ -1,40 +1,41 @@
 # Transaction Aggregation API
 
-A .NET 9 Web API for aggregating customer transactions from multiple bank sources. Supports fetching transactions, querying by customer, and aggregating totals by category or date.
+A **.NET 9 Web API** for aggregating customer transactions from multiple bank sources.
+Supports fetching transactions, querying by customer, and aggregating totals by category, source, and direction (money in/out).
 
 ---
 
 ## Table of Contents
 
-- [Features](#features)
-- [Technologies](#technologies)
-- [Getting Started](#getting-started)
-- [Running the API](#running-the-api)
-- [API Endpoints](#api-endpoints)
-- [Docker](#docker)
-- [Future Enhancements](#future-enhancements)
-- [Author](#author)
+* [Features](#features)
+* [Technologies](#technologies)
+* [Getting Started](#getting-started)
+* [Running the API](#running-the-api)
+* [API Endpoints](#api-endpoints)
+* [Docker](#docker)
+* [Future Enhancements](#future-enhancements)
+* [Author](#author)
 
 ---
 
 ## Features
 
-- Retrieve all transactions
-- Retrieve transactions by customer
-- Aggregate transactions by category
-- Aggregate transactions by date (month/year)
-- Swagger UI for interactive testing
-- Dockerized for easy deployment
+* Retrieve all customers
+* Retrieve all transactions
+* Retrieve transactions by customer
+* Aggregate transactions by **category**, **source**, and **money direction (in/out)**
+* Swagger UI for interactive testing
+* Dockerized for easy deployment
 
 ---
 
 ## Technologies
 
-- .NET 9 Web API
-- C#
-- Dependency Injection
-- Docker
-- Swagger (OpenAPI)
+* .NET 9 Web API
+* C#
+* Dependency Injection
+* Docker
+* Swagger (OpenAPI)
 
 ---
 
@@ -42,11 +43,10 @@ A .NET 9 Web API for aggregating customer transactions from multiple bank source
 
 ### Prerequisites
 
-- [.NET 9 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)
-- [Docker](https://www.docker.com/get-started) (optional, for containerized deployment)
+* [.NET 9 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)
+* [Docker](https://www.docker.com/get-started) *(optional, for containerized deployment)*
 
 ### Clone the Repository
-
 ```bash
 git clone https://github.com/Yoda-Mag/transaction-aggregation-api-dotnet.git
 cd transaction-aggregation-api-dotnet/ProjectsTransactionAggregation/TransactionAggregationApi
@@ -58,45 +58,51 @@ cd transaction-aggregation-api-dotnet/ProjectsTransactionAggregation/Transaction
 
 ### Running Locally
 
-1. Build the project:
+1. **Build the project**
 ```bash
-dotnet build
+   dotnet build
 ```
 
-2. Run the application:
+2. **Run the application**
 ```bash
-dotnet run
+   dotnet run
 ```
 
-3. The API will be available at:
-   - **HTTPS:** `https://localhost:5139`
-   - **HTTP:** `http://localhost:5138`
+3. **Access the API**
 
-4. Open Swagger UI at:
-   - `https://localhost:5139/swagger`
+   * HTTPS → `https://localhost:5139`
+   * HTTP → `http://localhost:5138`
+
+4. **Swagger UI**
+
+   * Visit: `https://localhost:5139/swagger/index.html`
 
 ---
 
 ## API Endpoints
 
-| Method | Endpoint                                  | Description                                          |
-| ------ | ----------------------------------------- | ---------------------------------------------------- |
-| GET    | `/api/transactions`                       | Get all transactions                                 |
-| GET    | `/api/transactions/customer/{customerId}` | Get transactions for a specific customer             |
-| GET    | `/api/transactions/aggregate/category`    | Get total and count of transactions per category     |
-| GET    | `/api/transactions/aggregate/source`      | Get total and count of transactions per month/source |
-| GET    | `/api/customers`                          | Get all customers                                    |
+| Method | Endpoint                                      | Description                                      |
+| ------ | --------------------------------------------- | ------------------------------------------------ |
+| GET    | `/api/customers`                              | Get all customers                                |
+| GET    | `/api/transactions/all`                       | Get all transactions                             |
+| GET    | `/api/transactions/customer/{customerId}`     | Get transactions for a specific customer         |
+| GET    | `/api/transactions/aggregate/category`        | Get total and count of transactions per category |
+| GET    | `/api/transactions/aggregate/source-by-month` | Get totals per source, grouped by month          |
+| GET    | `/api/transactions/aggregate/moneyIn`         | Get total amount and count of all incoming funds |
+| GET    | `/api/transactions/aggregate/moneyOut`        | Get total amount and count of all outgoing funds |
+
+---
 
 ### Example Requests
 
 #### Get All Transactions
 ```bash
-curl -X GET "https://localhost:5139/api/transactions"
+curl -X GET "https://localhost:5139/api/transactions/all"
 ```
 
 #### Get Transactions by Customer
 ```bash
-curl -X GET "https://localhost:5139/api/transactions/customer/1"
+curl -X GET "https://localhost:5139/api/transactions/customer/{customerId}"
 ```
 
 #### Aggregate by Category
@@ -109,43 +115,58 @@ curl -X GET "https://localhost:5139/api/transactions/aggregate/category"
 ## Docker
 
 ### Build Docker Image
-
 ```bash
 docker build -t transaction-aggregation-api .
 ```
 
 ### Run Container
-
 ```bash
 docker run -d -p 8081:8080 transaction-aggregation-api
 ```
 
-The API will be available at:
-- `http://localhost:8081`
+**API will be available at:**  
+-> `http://localhost:8081`
 
-### Access Swagger in Docker
+**Swagger (inside Docker):**  
+-> `http://localhost:8081/swagger/index.html`
 
-Navigate to: `http://localhost:8081/swagger`
+---
+
+### Docker Compose
+
+**Build and Run:**
+```bash
+docker-compose up -d --build
+```
+
+**Stop Services:**
+```bash
+docker-compose down
+```
+
+**Access via Docker Compose:**  
+-> `http://localhost:8081`
 
 ---
 
 ## Future Enhancements
 
-- Add unit tests for services and controllers
-- Add DTOs for API responses
-- Implement global error handling middleware
-- Add request logging and monitoring
-- Add filtering/sorting by date range or amount
-- Support database storage (SQL Server, PostgreSQL) instead of in-memory data
-- Use Docker Compose for multi-container setups
-- Implement authentication and authorization
-- Add caching for improved performance
-- Create CI/CD pipeline
+* Add unit and integration tests
+* Introduce global exception handling middleware
+* Add structured logging and request monitoring
+* Enable filtering/sorting by date range or amount
+* Integrate with a SQL or NoSQL database
+* Add authentication & authorization (JWT or OAuth)
+* Introduce caching for performance
+* Add CI/CD pipeline (GitHub Actions)
 
 ---
 
 ## Author
 
-**Letlhogonolo Magano**
+**Letlhogonolo Magano**  
+ *Final Year IT Student | Backend & Data Enthusiast*
 
 [![GitHub](https://img.shields.io/badge/GitHub-Yoda--Mag-181717?style=flat&logo=github)](https://github.com/Yoda-Mag)
+
+---
